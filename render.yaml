@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: smmgen-ticket-bridge
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install && npx playwright install --with-deps
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ADMIN_USERNAME
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: PROVIDER_LOGIN_URL
+        sync: false
+      - key: PROVIDER_USERNAME
+        sync: false
+      - key: PROVIDER_PASSWORD
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
